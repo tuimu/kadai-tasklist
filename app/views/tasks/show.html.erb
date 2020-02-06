@@ -1,0 +1,8 @@
+<h1>Task id:<%= @task.id %></h1>
+
+<p>Todo: <%= @task.todo %></p>
+<%= link_to 'Edit Task', edit_task_path(@task) %>
+<br>
+<%= link_to 'Delete Task', @task, method: :delete, data: { confirm: 'Sure to delete?'} %>
+<br>
+<%= link_to 'Return Index', task_path %>
