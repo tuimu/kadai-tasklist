@@ -5,3 +5,5 @@
     <li><%= link_to task.id, task_path(task) %>: <%= task.content %></li>
     <% end %>
 </ul>
+
+<%= link_to 'Create new Task', new_task_path %>
