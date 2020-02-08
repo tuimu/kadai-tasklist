@@ -9,17 +9,17 @@ class TasksController < ApplicationController
     end
     
     def new
-        @task = Task.new(content: 'New Task', status: 'New')
+        @task = Task.new
     end
     
     def create
         @task = Task.new(task_params)
         
         if @task.save
-            flash[:success] = 'Todo is created!'
+            flash[:success] = 'Task is created!'
             redirect_to @task
         else
-            flash.now[:danger] = 'Todo is missed...'
+            flash.now[:danger] = 'Task is missed...'
             render :new
         end
     end
@@ -28,12 +28,11 @@ class TasksController < ApplicationController
     end
     
     def update
-        
-        if @task.save
-            flash[:success] = 'Todo is updated!'
+        if @task.update(task_params)
+            flash[:success] = 'Task is updated!'
             redirect_to @task
         else
-            flash.now[:danger] = 'Todo is remained...'
+            flash.now[:danger] = 'Task is remained...'
             render :edit
         end
     end
@@ -41,7 +40,7 @@ class TasksController < ApplicationController
     def destroy
         @task.destroy
         
-        flash[:success] = 'Todo is destroyed!'
+        flash[:success] = 'Task is destroyed!'
         redirect_to tasks_url
     end
     
