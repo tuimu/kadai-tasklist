@@ -1,6 +1,10 @@
 <h1>Task id:<%= @task.id %></h1>
 
-<p>Todo: <%= @task.content %></p>
+<p>
+    Status: <%= @task.status %><br>
+    Todo: <%= @task.content %>
+</p>
+
 <%= link_to 'Edit Task', edit_task_path(@task) %>
 <br>
 <%= link_to 'Delete Task', @task, method: :delete, data: { confirm: 'Sure to delete?'} %>

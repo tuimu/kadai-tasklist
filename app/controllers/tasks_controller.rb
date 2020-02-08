@@ -1,15 +1,15 @@
 class TasksController < ApplicationController
+    before_action :set_task, only: [:show, :edit, :update, :destroy]
     
     def index
         @tasks = Task.all
     end
     
     def show
-        @task = Task.find(params[:id])
     end
     
     def new
-        @task = Task.new(content: 'preset task')
+        @task = Task.new(content: 'New Task', status: 'New')
     end
     
     def create
@@ -25,11 +25,9 @@ class TasksController < ApplicationController
     end
     
     def edit
-        @task = Task.find(params[:id])
     end
     
     def update
-        @task = Task.find(params[:id])
         
         if @task.save
             flash[:success] = 'Todo is updated!'
@@ -41,7 +39,6 @@ class TasksController < ApplicationController
     end
     
     def destroy
-        @task = Task.find(params[:id])
         @task.destroy
         
         flash[:success] = 'Todo is destroyed!'
@@ -50,8 +47,12 @@ class TasksController < ApplicationController
     
     private
     
+    def set_task
+        @task = Task.find(params[:id])
+    end
+    
     def task_params
-        params.require(:task).permit(:content)
+        params.require(:task).permit(:content, :status)
     end
     
 end
