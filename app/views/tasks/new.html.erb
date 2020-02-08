@@ -1,8 +1,8 @@
 <h1>New Todo Create</h1>
 
 <%= form_with(model: @task, local: true) do |f| %>
-    <%= f.label :todo, 'Task: ' %>
-    <%= f.text_field :todo %>
+    <%= f.label :content, 'Task: ' %>
+    <%= f.text_field :content %>
     
     <%= f.submit 'Send'%>
 <% end %>

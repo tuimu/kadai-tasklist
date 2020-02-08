@@ -9,7 +9,7 @@ class TasksController < ApplicationController
     end
     
     def new
-        @task = Task.new(todo: 'preset task')
+        @task = Task.new(content: 'preset task')
     end
     
     def create
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
     private
     
     def task_params
-        params.require(:task).permit(:todo)
+        params.require(:task).permit(:content)
     end
     
 end
