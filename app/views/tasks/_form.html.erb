@@ -1,20 +1,28 @@
-<%= form_with(model: task, local: true) do |f| %>
-    
-    <% if task.errors.any? %>
-    <div id="error_explanation">
-        <ul>
+<div class="row">  
+  <div class="col-6">
+    <%= form_with(model: task, local: true) do |f| %>
+        
+      <% if task.errors.any? %>
+        <div id="error_explanation" class="alert alert-warning">
+          <ul class="mb-0">
             <% task.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+              <li><%= msg %></li>
             <% end %>
-        </ul>
-    </div>
+          </ul>
+        </div>
+      <% end %>
+      
+      <div class="form-group">
+        <%= f.label :status, 'Status: ' %>
+        <%= f.text_field :status, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :content, 'Task: ' %>
+        <%= f.text_field :content, class: "form-control" %>
+      </div>
+      
+      <%= f.submit 'Send', class: "btn btn-primary" %>
     <% end %>
-    
-    <%= f.label :status, 'Status: ' %>
-    <%= f.text_field :status %>
-    <br>
-    <%= f.label :content, 'Task: ' %>
-    <%= f.text_field :content %>
-    <br>
-    <%= f.submit 'Send'%>
-<% end %>
+  </div>
+</div>

@@ -1,10 +1,27 @@
 <h1>Tasks index</h1>
 
-<ul>
-    <% @tasks.each do |task| %>
-    <li><%= link_to task.id, task_path(task) %>: &lt;<%= task.status %>&gt; <%= task.content %></li>
-    <% end %>
-</ul>
-<%= paginate @tasks%>
+<% if @tasks.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Status</th>
+        <th>Todo</th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= link_to task.id, task %></td>
+          <td><%= task.status %></td>
+          <td><%= task.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @tasks %>
+  </div>
+<% end %>
 
-<%= link_to 'Create new Task', new_task_path %>
+<%= link_to 'Create new Task', new_task_path ,class: "btn btn-primary"%>

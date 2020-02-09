@@ -1,12 +1,19 @@
 <h1>Task id:<%= @task.id %></h1>
 
-<p>
-    Status: <%= @task.status %><br>
-    Todo: <%= @task.content %>
-</p>
+<table class="table table-bordered">
+  <tr>
+    <th>Id</th>
+    <td><%= @task.id %></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td><%= @task.status %></td>
+  </tr>
+  <tr>
+    <th>Todo</th>
+    <td><%= @task.content %></td>
+  </tr>
+</table>
 
-<%= link_to 'Edit Task', edit_task_path(@task) %>
-<br>
-<%= link_to 'Delete Task', @task, method: :delete, data: { confirm: 'Sure to delete?'} %>
-<br>
-<%= link_to 'Return Index', tasks_path %>
+<%= link_to 'Edit Task', edit_task_path(@task), class: "btn btn-light" %>
+<%= link_to 'Delete Task', @task, method: :delete, data: { confirm: 'Sure to delete?'}, class: "btn btn-danger" %>
